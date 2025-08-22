@@ -40,7 +40,7 @@ import birtdays from "./../assets/birthday.png";
 import { img } from "motion/react-client";
 import { FaBuilding } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa"; // Add at top
-
+import { FcPrint } from "react-icons/fc";
 
 
 const Bundle = () => {
@@ -352,7 +352,7 @@ const Bundle = () => {
               data-aos="zoom-in"
               data-aos-delay="600"
             >
-              <SiReactiveresume />
+              <FcPrint  />
             </button>
           </div>
         </div>
