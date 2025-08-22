@@ -114,11 +114,12 @@ const Bundle = () => {
 
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
-
+  const [status, setStatus] = useState({ sending: false, ok: null, msg: "" });
     const validate = () => {
       let newErrors = {};
 
       if (!form.name.trim()) newErrors.name = "Name is required";
+      if (!form.email.trim()) newErrors.email = "Email is required";
       if (!form.phone.trim()) newErrors.phone = "Phone is required";
 
       if (form.company.trim() && !form.position) {
@@ -134,18 +135,49 @@ const Bundle = () => {
     };
 
     const handleChange = (e) => {
-      setForm({ ...form, [e.target.name]: e.target.value });
+      if(e.target.name=="name"){
+         if (/^[A-Za-z\s]*$/.test(value)) {
+          setForm({ ...form, [e.target.name]: e.target.value });
+         }
+      }else if( e.target.name=="phone"){
+        if (/^[0-9]*$/.test(value) && value.length <= 10) {
+          setForm({ ...form, [e.target.name]: e.target.value });
+        }
+      }else{
+          setForm({ ...form, [e.target.name]: e.target.value });
+      }
     };
 
     const handleSubmit = (e) => {
       e.preventDefault();
+      let newErrors={}
       if (!validate()) return;
+          if (form.name.trim().length < 2) {
+            newErrors.name="Name must be at least 2 alphabets."
+            setErrors(newErrors);
+       return;
+    }
+       // Email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      newErrors.email="Enter a valid email address."
+     setErrors(newErrors);
+      return;
+    }
+
+    // Mobile validation
+    if (form.mobile.length < 8) {
+       newErrors.email= "Mobile number must be  10 digits."
+     setErrors(newErrors);
+      return;
+    }
+
 
       setLoading(true);
 
       // Prepare email data
       const emailData = {
         name: form.name,
+        email: form.email,
         phone: form.phone,
         company: form.company || "N/A",
         position:
@@ -158,16 +190,17 @@ const Bundle = () => {
       // Replace with your EmailJS credentials
       emailjs
         .send(
-          "YOUR_SERVICE_ID",
-          "YOUR_TEMPLATE_ID",
+          "service_jfaw94b",
+          "template_o7kp4qk",
           emailData,
-          "YOUR_PUBLIC_KEY"
+          "NftSywspElG-wAh_E"
         )
         .then(
           () => {
             alert("Message sent successfully!");
             setForm({
               name: "",
+              email: "",
               phone: "",
               company: "",
               position: "",
@@ -598,6 +631,24 @@ const Bundle = () => {
               <p className="text-red-500 text-sm mt-1">{errors.name}</p>
             )}
           </div>
+          {/*Email */}
+
+              <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Email*
+            </label>
+            <input
+              type="text"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder="John123@gmail.com"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 shadow-sm"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
+          </div>
 
           {/* Phone */}
           <div>
@@ -609,7 +660,7 @@ const Bundle = () => {
               name="phone"
               value={form.phone}
               onChange={handleChange}
-              placeholder="+1 234 567 890"
+              placeholder="+91 8976896780"
               className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 shadow-sm"
             />
             {errors.phone && (
