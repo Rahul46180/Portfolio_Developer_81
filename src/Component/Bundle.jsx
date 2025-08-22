@@ -434,7 +434,7 @@ const Bundle = () => {
 
         <div className="relative max-w-6xl mx-auto">
           {/* Timeline spine */}
-          <div className="absolute left-1/2 -translate-x-1/2 w-[6px] h-full bg-gradient-to-b from-pink-500 via-purple-500 to-indigo-500 rounded-full animate-pulse"></div>
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-[3px] h-full bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500"></div>
 
           {getStructure.Experience.map((exp, idx) => (
             <motion.div
@@ -472,7 +472,7 @@ const Bundle = () => {
               </div>
 
               {/* Timeline dot */}
-              <div className="z-10 w-12 h-12 bg-gradient-to-br from-pink-500 to-indigo-500 rounded-full border-[6px] border-white dark:border-gray-900 shadow-xl my-8 md:my-0"></div>
+              <div className="hidden md:flex z-10 w-8 h-8 bg-gradient-to-br from-indigo-500 to-pink-500 rounded-full border-4 border-white dark:border-gray-900 shadow-lg items-center justify-center hover:scale-110 transition-transform duration-300"></div>
 
               {/* Empty space on alternate side */}
               <div className="hidden md:block w-[46%]"></div>
