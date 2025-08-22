@@ -241,7 +241,7 @@ const Bundle = () => {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden fixed top-[70px] right-0 h-[100vh] w-2/3 transition-transform duration-300 ${
+        className={`md:hidden fixed top-[64px] right-0 h-[100vh] w-2/3 transition-transform duration-300 z-[999] ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{ backgroundColor: isDarkMode ? "#111" : "#f5f5f5" }}
