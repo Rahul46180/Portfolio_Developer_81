@@ -69,10 +69,25 @@ const sectionRefs = {
 };
 
 // Smooth scroll function
-const scrollToSection = (section) => {
+const scrollToSection = (section,path) => {
   sectionRefs[section]?.current?.scrollIntoView({ behavior: "smooth" });
+  window.history.pushState({}, "", path); // update URL without reload
   setMenuOpen(false); // close mobile menu after click
 };
+    // On initial load, check URL and scroll
+  useEffect(() => {
+    if (window.location.pathname === "/home" && homeRef.current) {
+      homeRef.current.scrollIntoView({ behavior: "smooth" });
+    } else if (window.location.pathname === "/skills" && skillsRef.current) {
+      skillsRef.current.scrollIntoView({ behavior: "smooth" });
+    }else if (window.location.pathname === "/experience" && experienceRef.current) {
+      experienceRef.current.scrollIntoView({ behavior: "smooth" });
+    }else if (window.location.pathname === "/projects" && projectsRef.current) {
+      projectsRef.current.scrollIntoView({ behavior: "smooth" });
+    }else{
+      contactRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
   const navItems = [
     "Home",
@@ -255,7 +270,7 @@ const scrollToSection = (section) => {
                 data-aos="fade-down"
                 data-aos-delay={`${idx * 100}`}
               >
-               <button onClick={() => scrollToSection(item)}>{item}</button>
+               <button onClick={() => scrollToSection(item,`/${item.toLowerCase()}`)}>{item}</button>
               </li>
             ))}
             <li
@@ -318,7 +333,7 @@ const scrollToSection = (section) => {
               data-aos="fade-left"
               data-aos-delay={`${idx * 100}`}
             >
-                <button onClick={() => scrollToSection(item)}>{item}</button>
+                <button onClick={() => scrollToSection(item,`/${item.toLowerCase()}`)}>{item}</button>
             </li>
           ))}
         </ul>
