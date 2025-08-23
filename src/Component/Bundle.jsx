@@ -52,6 +52,28 @@ const Bundle = () => {
 
   const getStructure = portfolio[lang];
 
+  // Refs for each section
+const homeRef = useRef(null);
+const skillsRef = useRef(null);
+const experienceRef = useRef(null);
+const projectsRef = useRef(null);
+const contactRef = useRef(null);
+
+  // When Click Option Then In Query Not Show #Home
+const sectionRefs = {
+  Home: homeRef,
+  Skills: skillsRef,
+  Experience: experienceRef,
+  Projects: projectsRef,
+  ContactUs: contactRef,
+};
+
+// Smooth scroll function
+const scrollToSection = (section) => {
+  sectionRefs[section]?.current?.scrollIntoView({ behavior: "smooth" });
+  setMenuOpen(false); // close mobile menu after click
+};
+
   const navItems = [
     "Home",
     "Skills",
@@ -233,7 +255,7 @@ const Bundle = () => {
                 data-aos="fade-down"
                 data-aos-delay={`${idx * 100}`}
               >
-                <a href={`${item.toLowerCase()}`}>{item}</a>
+               <button onClick={() => scrollToSection(item)}>{item}</button>
               </li>
             ))}
             <li
@@ -296,7 +318,7 @@ const Bundle = () => {
               data-aos="fade-left"
               data-aos-delay={`${idx * 100}`}
             >
-              <a href={`#${item.toLowerCase()}`}>{item}</a>
+                <button onClick={() => scrollToSection(item)}>{item}</button>
             </li>
           ))}
         </ul>
@@ -306,6 +328,8 @@ const Bundle = () => {
       <section
         className="flex flex-col-reverse md:flex-row justify-between items-center gap-8 p-6 pt-[90px] min-h-[500px]"
         style={{ backgroundColor: bgColor, color: textColor }}
+        ref={homeRef}
+        id="home"
       >
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-bold" data-aos="fade-right">
@@ -396,6 +420,7 @@ const Bundle = () => {
       </section>
       {/* Skill Section */}
       <section
+       ref={skillsRef} 
         id="skills"
         className="w-full flex flex-col items-center gap-8 py-12 px-4 sm:px-8"
         style={{ backgroundColor: bgColor, color: textColor }}
@@ -444,6 +469,7 @@ const Bundle = () => {
       </section>
       {/* EXPERIENCE SECTION */}
       <section
+      ref={experienceRef}
         id="experience"
         className="py-1 px-4 relative overflow-hidden"
         style={{
@@ -509,6 +535,7 @@ const Bundle = () => {
       </section>
       {/* Project Section */}
       <section
+        ref={projectsRef} 
         id="projects"
         className="px-10 transition-colors duration-500"
         style={{ backgroundColor: bgColor, color: textColor }}
@@ -598,7 +625,7 @@ const Bundle = () => {
       </section>
 
       {/* Contact Us */}
-      <div className="flex justify-center items-center min-h-screen px-4 py-8"  id="ContactUs">
+      <div className="flex justify-center items-center min-h-screen px-4 py-8"  ref={contactRef} id="contactus">
         <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-6">
           {/* Title */}
           <div className="text-center">
