@@ -165,7 +165,7 @@ const Bundle = () => {
     }
 
     // Mobile validation
-    if (form.mobile.length < 8) {
+    if (form.mobile.length <= 10) {
        newErrors.email= "Mobile number must be  10 digits."
      setErrors(newErrors);
       return;
