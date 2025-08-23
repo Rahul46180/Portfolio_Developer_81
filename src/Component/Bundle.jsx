@@ -40,7 +40,8 @@ import birtdays from "./../assets/birthday.png";
 import { img } from "motion/react-client";
 import { FaBuilding } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa"; // Add at top
-import { FcPrint } from "react-icons/fc";
+import { ImDownload } from "react-icons/im";
+
 
 
 const Bundle = () => {
@@ -384,7 +385,7 @@ const scrollToSection = (section,path) => {
               {
                 icon: <BsQrCodeScan />,
                 delay: 400,
-                link: "https://wa.link/4xohz4",
+                link: "https://qrcode-generate81.vercel.app/",
               },
             ].map((item, idx) => (
               <a
@@ -405,7 +406,7 @@ const scrollToSection = (section,path) => {
               data-aos="zoom-in"
               data-aos-delay="600"
             >
-              <FcPrint  />
+              <ImDownload   />
             </button>
           </div>
         </div>
