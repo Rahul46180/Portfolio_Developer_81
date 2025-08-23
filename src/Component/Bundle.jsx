@@ -71,24 +71,10 @@ const sectionRefs = {
 // Smooth scroll function
 const scrollToSection = (section,path) => {
   sectionRefs[section]?.current?.scrollIntoView({ behavior: "smooth" });
-  window.history.pushState({}, "", path); // update URL without reload
+ 
   setMenuOpen(false); // close mobile menu after click
 };
-    // On initial load, check URL and scroll
-  useEffect(() => {
-    console.log("window.location.pathname",window.location.pathname)
-    if (window.location.pathname === "/contactus" && contactRef.current) {
-      contactRef.current.scrollIntoView({ behavior: "smooth" });
-    } else if (window.location.pathname === "/skills" && skillsRef.current) {
-      skillsRef.current.scrollIntoView({ behavior: "smooth" });
-    }else if (window.location.pathname === "/experience" && experienceRef.current) {
-      experienceRef.current.scrollIntoView({ behavior: "smooth" });
-    }else if (window.location.pathname === "/projects" && projectsRef.current) {
-      projectsRef.current.scrollIntoView({ behavior: "smooth" });
-    }else{
-      homeRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [window.location.pathname]);
+
 
   const navItems = [
     "Home",
