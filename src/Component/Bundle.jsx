@@ -176,7 +176,7 @@ const Bundle = () => {
         company: form.company || "N/A",
         position:
           form.position === "Other"
-            ? form.customPosition
+            ? form.customPosition|| "N/A"
             : form.position || "N/A",
         message: form.message || "No message provided",
       };
