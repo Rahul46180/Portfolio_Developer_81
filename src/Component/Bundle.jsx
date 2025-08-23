@@ -87,7 +87,7 @@ const scrollToSection = (section,path) => {
     }else{
       homeRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, []);
+  }, [window.location.pathname]);
 
   const navItems = [
     "Home",
