@@ -136,11 +136,11 @@ const Bundle = () => {
 
     const handleChange = (e) => {
       if(e.target.name=="name"){
-         if (/^[A-Za-z\s]*$/.test(value)) {
+         if (/^[A-Za-z\s]*$/.test(e.target.value)) {
           setForm({ ...form, [e.target.name]: e.target.value });
          }
       }else if( e.target.name=="phone"){
-        if (/^[0-9]*$/.test(value) && value.length <= 10) {
+        if (/^[0-9]*$/.test(e.target.value) && e.target.value.length <= 10) {
           setForm({ ...form, [e.target.name]: e.target.value });
         }
       }else{
