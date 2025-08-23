@@ -76,6 +76,7 @@ const scrollToSection = (section,path) => {
 };
     // On initial load, check URL and scroll
   useEffect(() => {
+    console.lg("window.location.pathname",window.location.pathname)
     if (window.location.pathname === "/contactus" && contactRef.current) {
       contactRef.current.scrollIntoView({ behavior: "smooth" });
     } else if (window.location.pathname === "/skills" && skillsRef.current) {
