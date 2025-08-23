@@ -233,7 +233,7 @@ const Bundle = () => {
                 data-aos="fade-down"
                 data-aos-delay={`${idx * 100}`}
               >
-                <a href={`#${item.toLowerCase()}`}>{item}</a>
+                <a href={`${item.toLowerCase()}`}>{item}</a>
               </li>
             ))}
             <li
@@ -598,7 +598,7 @@ const Bundle = () => {
       </section>
 
       {/* Contact Us */}
-      <div className="flex justify-center items-center min-h-screen px-4 py-8">
+      <div className="flex justify-center items-center min-h-screen px-4 py-8"  id="ContactUs">
         <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-6">
           {/* Title */}
           <div className="text-center">
