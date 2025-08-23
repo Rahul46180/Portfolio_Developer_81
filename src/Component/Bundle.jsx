@@ -76,8 +76,8 @@ const scrollToSection = (section,path) => {
 };
     // On initial load, check URL and scroll
   useEffect(() => {
-    if (window.location.pathname === "/home" && homeRef.current) {
-      homeRef.current.scrollIntoView({ behavior: "smooth" });
+    if (window.location.pathname === "/contactus" && contactRef.current) {
+      contactRef.current.scrollIntoView({ behavior: "smooth" });
     } else if (window.location.pathname === "/skills" && skillsRef.current) {
       skillsRef.current.scrollIntoView({ behavior: "smooth" });
     }else if (window.location.pathname === "/experience" && experienceRef.current) {
@@ -85,7 +85,7 @@ const scrollToSection = (section,path) => {
     }else if (window.location.pathname === "/projects" && projectsRef.current) {
       projectsRef.current.scrollIntoView({ behavior: "smooth" });
     }else{
-      contactRef.current.scrollIntoView({ behavior: "smooth" });
+      homeRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
 
